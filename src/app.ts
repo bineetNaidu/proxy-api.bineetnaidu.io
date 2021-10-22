@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { ___prod___ } from './utils/contants';
-import { apiRoutes } from './api';
+import { proxyRouter } from './api';
 import { NotFoundError } from './utils/notFoundError';
 import { ExpressErrorHandler } from './utils/ExpressErrorHandler';
 
@@ -15,15 +15,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
-app.use(express.json());
 
-app.get('/', (_req, res) => {
-  res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
-  });
-});
-
-app.use('/api', apiRoutes);
+app.use(proxyRouter);
 
 //! Not found page error
 app.all('*', NotFoundError);
