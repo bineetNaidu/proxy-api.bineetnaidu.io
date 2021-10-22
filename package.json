@@ -4,7 +4,7 @@
   "description": "A Proxy API server for api.bineetnaidu.io.",
   "main": "index.js",
   "engines": {
-    "node": "<=15"
+    "node": "16"
   },
   "scripts": {
     "prebuild": "rimraf dist",
